@@ -1,5 +1,5 @@
 import os
-from add import logos, nums
+from add import get_images, nums
 from time import sleep
 
 
@@ -27,11 +27,12 @@ def start():
 def main():
     score = 0
     while True:
-        for i in range(0, 6):
-            print(logos[i]['image'])
+        images = get_images()
+        for i in range(len(images)):
+            print(images[i]['image'])
             num = 1
             print()
-            for j in logos[i]['options']:
+            for j in images[i]['options']:
                 print(f'\t{num}. {j}')
                 num += 1
             print('\n\tYour Answer - ')
@@ -44,14 +45,14 @@ def main():
                     opt = int(opt)
                     break
 
-            if logos[i]['options'][opt - 1] == logos[i]['name']:
+            if images[i]['options'][opt - 1] == images[i]['name']:
                 print('\n\t✔️ Correct :), +1 point')
                 score += 1
                 sleep(2)
                 cls()
                 continue
             else:
-                print(f'\n\tWrong :(, it\'s {logos[i]["name"]}')
+                print(f'\n\tWrong :(, it\'s {images[i]["name"]}')
                 sleep(2)
                 cls()
                 continue
